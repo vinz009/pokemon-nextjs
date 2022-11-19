@@ -1,12 +1,19 @@
 import axios from 'axios';
 
 export default function HomePage({ data }) {
+	console.log(data);
+
+const lists = data.results.map((pokemon) => (
+	<div>
+	Name: {pokemon.name}		
+	</div>
+));
 
   return (
 	  <Container>
 		  <Header />
 		  <Main  />
-		  <SideBar data={data} />
+		  <SideBar lists={lists} />
 	  </Container>
   );
 }
@@ -40,10 +47,10 @@ function Main ( ) {
 	);
 }
 
-function SideBar ({data}) {
+function SideBar ({lists}) {
 	return (
 		<div>
-		Count: {data.count}
+		{lists}
 		</div>
 	);
 }
