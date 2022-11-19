@@ -1,11 +1,43 @@
 
 
-function HomePage() {
+export default function HomePage() {
   return (
-	  <h1 className="text-9xl font-bold underline">
-	  Welcome to Next.js!
-	  </h1>
-  )
+	  <Container>
+		  <Header />
+		  <Main />
+		  <SideBar />
+	  </Container>
+  );
 }
 
-export default HomePage
+function Container ( {children} ) {
+	return (
+		<div>
+		{children}
+		</div>
+	); 
+}
+
+function Header () {
+	return ( 
+	  <h1 className="text-4xl font-bold underline">
+		Pokedex
+	  </h1>
+	);
+}
+
+function Main () {
+	return (
+		<h1>
+		asdflksdfh
+		</h1>
+	);
+}
+
+function SideBar () {
+	return (
+		<h1>
+		this is sidebar
+		</h1>
+	);
+}
