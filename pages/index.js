@@ -1,11 +1,12 @@
+import axios from 'axios';
 
+export default function HomePage({ data }) {
 
-export default function HomePage() {
   return (
 	  <Container>
 		  <Header />
-		  <Main />
-		  <SideBar />
+		  <Main  />
+		  <SideBar data={data} />
 	  </Container>
   );
 }
@@ -26,18 +27,33 @@ function Header () {
 	);
 }
 
-function Main () {
+function Main ( ) {
 	return (
-		<h1>
-		asdflksdfh
-		</h1>
+		<div>
+		<div>Name:  </div>
+		<div>Type: </div>
+		<div>Ability: </div>
+		<div>Height: </div>
+		<div>Weight: </div>
+
+		</div>
 	);
 }
 
-function SideBar () {
+function SideBar ({data}) {
 	return (
-		<h1>
-		this is sidebar
-		</h1>
+		<div>
+		Count: {data.count}
+		</div>
 	);
 }
+
+export async function getStaticProps () {
+	const {data} = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0');
+	  return { 
+	 
+		  props:  { data },
+	  }
+
+}
+
