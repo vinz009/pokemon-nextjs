@@ -1,15 +1,26 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function HomePage({ data }) {
 	
 	const [pokemon, setPokemon] = useState(data);
 
+
+
 const lists = pokemon.results.map((pokemon) => (
-	<div>
-	Name: {pokemon.name}		
+
+	<div
+onClick={handleClick}
+	>
+	<button >
+	{pokemon.name}		
+	</button>
 	</div>
 ));
+
+function handleClick (e) {
+	console.log(e.target.textContent);
+}
 
 function handleNext () {
 
@@ -94,6 +105,9 @@ function SideBar ({lists, handleNext, handlePrevious}) {
 
 export async function getStaticProps () {
 	const {data} = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0');
+
+
+
 	  return { 
 	 
 		  props:  { data },
