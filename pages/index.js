@@ -75,7 +75,11 @@ export default function HomePage({ data }) {
 }
 
 function Container({ children }) {
-  return <div>{children}</div>;
+  return (
+	  <div className="text-xl font-montagu">
+	  {children}
+	  </div>
+  );
 }
 
 function Header() {
