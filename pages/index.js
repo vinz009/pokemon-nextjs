@@ -16,7 +16,7 @@ export default function HomePage({ data }) {
 
   const lists = pokemon.results.map((pokemon) => (
     <div
-      className="m-1 w-40 rounded-full border-2 border-black bg-green-300  p-2 hover:bg-green-600 "
+      className="m-1 w-40 rounded-full border-2 border-black bg-green-300 p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-600 "
       onClick={handleClick}
     >
       <button>{pokemon.name}</button>
@@ -80,7 +80,9 @@ function Container({ children }) {
 
 function Header() {
   return (
-    <h1 className="mt-8 text-center text-4xl font-bold underline">Pokedex</h1>
+    <h1 className="mt-8 animate-bounce text-center text-4xl font-bold underline">
+      Pokedex
+    </h1>
   );
 }
 
@@ -105,14 +107,14 @@ function Main({ details }) {
 
 function SideBar({ lists, handleNext, handlePrevious }) {
   return (
-    <div className="mt-6 text-center">
-      <div className="m-2">Pokemon List</div>
+    <div className="mt-4 text-center">
+      <div className="m-2 bg-green-300 hover:drop-shadow-xl">Pokemon List</div>
       <div className="grid grid-cols-2 justify-items-center ">{lists}</div>
-      <div className="flex justify-center">
-        <div className="m-4 w-28 w-20 rounded-full border-2 border-black bg-green-300 p-1">
+      <div className="mt-2 flex justify-center">
+        <div className="m-4 w-28 w-20 rounded-full border-2 border-black bg-green-300 p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500">
           <button onClick={handleNext}>Next</button>
         </div>
-        <div className="m-4 w-28 rounded-full border-2 border-black bg-green-300 p-1">
+        <div className="m-4 w-28 w-20 rounded-full border-2 border-black bg-green-300 p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500">
           <button onClick={handlePrevious}>Prev</button>
         </div>
       </div>
