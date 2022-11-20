@@ -7,11 +7,15 @@ export default function HomePage({ data }) {
   const [ability, setAbility] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [front, setFront] = useState("");
+  const [back, setBack] = useState("");
   const details = {
     name,
     ability,
     height,
     weight,
+    front,
+    back,
   };
 
   const lists = pokemon.results.map((pokemon) => (
@@ -32,6 +36,8 @@ export default function HomePage({ data }) {
         setAbility(response.data.abilities[0].ability.name);
         setHeight(response.data.height);
         setWeight(response.data.weight);
+        setFront(response.data.sprites.front_default);
+        setBack(response.data.sprites.back_default);
       })
       .catch(function (error) {
         console.log(error);
@@ -89,6 +95,14 @@ function Header() {
 function Main({ details }) {
   return (
     <div className="mt-6 flex flex-col border-2 border-black text-center">
+      <div className="flex">
+        <div>
+          <img src={details.front} alt={"image"} />
+        </div>
+        <div>
+          <img src={details.back} alt={"image"} />
+        </div>
+      </div>
       <div className="border-2 border-black ">
         Name:&nbsp;&nbsp;&nbsp;{details.name}{" "}
       </div>
