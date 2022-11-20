@@ -4,7 +4,16 @@ import { useState, useEffect } from 'react';
 export default function HomePage({ data }) {
 	
 	const [pokemon, setPokemon] = useState(data);
-
+	const [name, setName] = useState('');
+	const [ability, setAbility] = useState('');
+	const [height, setHeight] = useState('');
+	const [weight, setWeight] = useState('');
+	const details = {
+		name,
+		ability,
+		height,
+		weight,	
+	};
 
 
 const lists = pokemon.results.map((pokemon) => (
@@ -19,7 +28,18 @@ onClick={handleClick}
 ));
 
 function handleClick (e) {
-	console.log(e.target.textContent);
+	const poke = e.target.textContent;
+	axios.get('https://pokeapi.co/api/v2/pokemon/' + poke)
+	.then(function (response) {
+		console.log(response.data);
+		 setName(response.data.name);
+		 setAbility(response.data.abilities[0].ability.name);
+		 setHeight(response.data.height);
+		 setWeight(response.data.weight);
+	})
+	.catch(function (error) {
+		console.log(error);
+	});
 }
 
 function handleNext () {
@@ -50,7 +70,7 @@ function handlePrevious () {
   return (
 	  <Container>
 		  <Header />
-		  <Main  />
+		  <Main details={details} />
 		  <SideBar lists={lists} handleNext={handleNext} handlePrevious={handlePrevious} />
 	  </Container>
   );
@@ -72,14 +92,13 @@ function Header () {
 	);
 }
 
-function Main ( ) {
+function Main ({ details}) {
 	return (
 		<div>
-		<div>Name:  </div>
-		<div>Type: </div>
-		<div>Ability: </div>
-		<div>Height: </div>
-		<div>Weight: </div>
+		<div>Name:{details.name}  </div>
+		<div>Ability:{details.ability} </div>
+		<div>Height:{details.height} </div>
+		<div>Weight:{details.weight} </div>
 
 		</div>
 	);
