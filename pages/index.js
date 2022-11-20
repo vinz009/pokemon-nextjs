@@ -15,8 +15,10 @@ export default function HomePage({ data }) {
   };
 
   const lists = pokemon.results.map((pokemon) => (
-    <div className="m-1 bg-green-300 hover:bg-green-600 rounded-full w-40 p-2  border-2 border-black " 
-	  onClick={handleClick}>
+    <div
+      className="m-1 w-40 rounded-full border-2 border-black bg-green-300  p-2 hover:bg-green-600 "
+      onClick={handleClick}
+    >
       <button>{pokemon.name}</button>
     </div>
   ));
@@ -26,7 +28,6 @@ export default function HomePage({ data }) {
     axios
       .get("https://pokeapi.co/api/v2/pokemon/" + poke)
       .then(function (response) {
-        console.log(response.data);
         setName(response.data.name);
         setAbility(response.data.abilities[0].ability.name);
         setHeight(response.data.height);
@@ -53,7 +54,6 @@ export default function HomePage({ data }) {
     axios
       .get(pokemon.previous)
       .then(function (response) {
-        console.log(response.data);
         setPokemon(response.data);
       })
       .catch(function (error) {
@@ -75,40 +75,46 @@ export default function HomePage({ data }) {
 }
 
 function Container({ children }) {
-  return (
-	  <div className="text-xl font-montagu">
-	  {children}
-	  </div>
-  );
+  return <div className="font-montagu text-xl">{children}</div>;
 }
 
 function Header() {
-  return <h1 className="text-4xl font-bold underline mt-8 text-center">Pokedex</h1>;
+  return (
+    <h1 className="mt-8 text-center text-4xl font-bold underline">Pokedex</h1>
+  );
 }
 
 function Main({ details }) {
   return (
-    <div className="flex flex-col border-2 border-black text-center mt-6">
-      <div className="border-2 border-black ">Name:&nbsp;&nbsp;&nbsp;{details.name} </div>
-      <div className="border-2 border-black ">Ability:&nbsp;&nbsp;&nbsp;{details.ability} </div>
-      <div className="border-2 border-black ">Height:&nbsp;&nbsp;&nbsp;{details.height} </div>
-      <div className="border-2 border-black ">Weight:&nbsp;&nbsp;&nbsp;{details.weight} </div>
+    <div className="mt-6 flex flex-col border-2 border-black text-center">
+      <div className="border-2 border-black ">
+        Name:&nbsp;&nbsp;&nbsp;{details.name}{" "}
+      </div>
+      <div className="border-2 border-black ">
+        Ability:&nbsp;&nbsp;&nbsp;{details.ability}{" "}
+      </div>
+      <div className="border-2 border-black ">
+        Height:&nbsp;&nbsp;&nbsp;{details.height}{" "}
+      </div>
+      <div className="border-2 border-black ">
+        Weight:&nbsp;&nbsp;&nbsp;{details.weight}{" "}
+      </div>
     </div>
   );
 }
 
 function SideBar({ lists, handleNext, handlePrevious }) {
   return (
-	<div className="text-center mt-6">
-	  <div className="m-2">Pokemon List</div>
-      <div className="flex flex-wrap justify-center items-center">{lists}</div>
+    <div className="mt-6 text-center">
+      <div className="m-2">Pokemon List</div>
+      <div className="grid grid-cols-2 justify-items-center ">{lists}</div>
       <div className="flex justify-center">
-	  	<div className="border-2 border-black m-4" >
-        <button onClick={handleNext}>Next</button>
-		  </div>
-	  	<div className="border-2 border-black m-4" >
-        <button onClick={handlePrevious}>Previous</button>
-		  </div>
+        <div className="m-4 w-28 w-20 rounded-full border-2 border-black bg-green-300 p-1">
+          <button onClick={handleNext}>Next</button>
+        </div>
+        <div className="m-4 w-28 rounded-full border-2 border-black bg-green-300 p-1">
+          <button onClick={handlePrevious}>Prev</button>
+        </div>
       </div>
     </div>
   );
