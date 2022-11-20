@@ -92,17 +92,30 @@ function Header() {
   );
 }
 
+function Image({ details }) {
+  if (!details.front) {
+    return null;
+  }
+  return (
+    <div className="flex flex-row justify-center ">
+      <div className="mx-2">
+        <img
+          className="w-28 border-2 border-black"
+          src={details.front}
+          alt={"image"}
+        />
+      </div>
+      <div className="w-28">
+        <img className="w-28" src={details.back} alt={"image"} />
+      </div>
+    </div>
+  );
+}
+
 function Main({ details }) {
   return (
     <div className="mt-6 flex flex-col border-2 border-black text-center">
-      <div className="flex">
-        <div>
-          <img src={details.front} alt={"image"} />
-        </div>
-        <div>
-          <img src={details.back} alt={"image"} />
-        </div>
-      </div>
+      <Image details={details} />
       <div className="border-2 border-black ">
         Name:&nbsp;&nbsp;&nbsp;{details.name}{" "}
       </div>
