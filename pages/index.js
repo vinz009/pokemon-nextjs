@@ -15,7 +15,7 @@ export default function HomePage({ data }) {
   };
 
   const lists = pokemon.results.map((pokemon) => (
-    <div className="border-2 border-black m-2" 
+    <div className="m-1 bg-green-300 hover:bg-green-600 rounded-full w-40 p-2  border-2 border-black " 
 	  onClick={handleClick}>
       <button>{pokemon.name}</button>
     </div>
@@ -83,25 +83,25 @@ function Container({ children }) {
 }
 
 function Header() {
-  return <h1 className="text-4xl font-bold underline">Pokedex</h1>;
+  return <h1 className="text-4xl font-bold underline mt-8 text-center">Pokedex</h1>;
 }
 
 function Main({ details }) {
   return (
-    <div className="flex flex-col border-2 border-black text-center">
-      <div className="border-2 border-black m-2">Name:{details.name} </div>
-      <div className="border-2 border-black m-2">Ability:{details.ability} </div>
-      <div className="border-2 border-black m-2">Height:{details.height} </div>
-      <div className="border-2 border-black m-2">Weight:{details.weight} </div>
+    <div className="flex flex-col border-2 border-black text-center mt-6">
+      <div className="border-2 border-black ">Name:&nbsp;&nbsp;&nbsp;{details.name} </div>
+      <div className="border-2 border-black ">Ability:&nbsp;&nbsp;&nbsp;{details.ability} </div>
+      <div className="border-2 border-black ">Height:&nbsp;&nbsp;&nbsp;{details.height} </div>
+      <div className="border-2 border-black ">Weight:&nbsp;&nbsp;&nbsp;{details.weight} </div>
     </div>
   );
 }
 
 function SideBar({ lists, handleNext, handlePrevious }) {
   return (
-	<div className="text-center" >
+	<div className="text-center mt-6">
 	  <div className="m-2">Pokemon List</div>
-      <div>{lists}</div>
+      <div className="flex flex-wrap justify-center items-center">{lists}</div>
       <div className="flex justify-center">
 	  	<div className="border-2 border-black m-4" >
         <button onClick={handleNext}>Next</button>
