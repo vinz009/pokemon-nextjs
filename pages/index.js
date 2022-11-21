@@ -115,7 +115,7 @@ function Image({ details }) {
 
 function Main({ details }) {
   return (
-    <div className="mx-4 flex flex-col rounded-tl-3xl bg-[#F7A4A4] py-2 text-center  lg:ml-4 lg:justify-center">
+    <div className="mx-4 flex flex-col  rounded-tl-3xl bg-gradient-to-r from-[#FFAFBD] to-[#FFC3A0] py-2 text-center  lg:ml-4 lg:justify-center">
       <Image details={details} />
       <div className="">Name:&nbsp;&nbsp;&nbsp;{details.name} </div>
       <div className="">Ability:&nbsp;&nbsp;&nbsp;{details.ability} </div>
@@ -127,7 +127,7 @@ function Main({ details }) {
 
 function SideBar({ lists, handleNext, handlePrevious }) {
   return (
-    <div className="mx-4 rounded-br-3xl bg-[#FEBE8C] pt-2 text-center lg:mr-4">
+    <div className="mx-4 rounded-br-3xl bg-gradient-to-r  from-[#FFAFBD] to-[#FFC3A0] pt-2 text-center lg:mr-4">
       <div className="m-2  ">Pokemon List</div>
       <div className="flex flex-wrap justify-center">{lists}</div>
       <div className="mt-2 flex justify-center">
