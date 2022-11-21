@@ -20,7 +20,7 @@ export default function HomePage({ data }) {
 
   const lists = pokemon.results.map((pokemon) => (
     <div
-      className="m-1 w-40 rounded-full border-2 border-black bg-green-300 p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-600 md:w-56 lg:w-96 "
+      className="m-1 w-40 rounded-br-3xl  bg-[#FFFBC1] p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-600 md:w-56 lg:w-96 "
       onClick={handleClick}
     >
       <button>{pokemon.name}</button>
@@ -48,7 +48,6 @@ export default function HomePage({ data }) {
     axios
       .get(pokemon.next)
       .then(function (response) {
-        console.log(response.data);
         setPokemon(response.data);
       })
       .catch(function (error) {
@@ -105,11 +104,7 @@ function Image({ details }) {
   return (
     <div className="flex flex-row justify-center ">
       <div className="mx-2">
-        <img
-          className="w-28 border-2 border-black"
-          src={details.front}
-          alt={"image"}
-        />
+        <img className="w-28 " src={details.front} alt={"image"} />
       </div>
       <div className="w-28">
         <img className="w-28" src={details.back} alt={"image"} />
@@ -120,34 +115,26 @@ function Image({ details }) {
 
 function Main({ details }) {
   return (
-    <div className="mt-6 flex flex-col border-2 border-black text-center lg:justify-center">
+    <div className="mx-4 flex flex-col rounded-tl-3xl bg-[#F7A4A4] py-2 text-center  lg:ml-4 lg:justify-center">
       <Image details={details} />
-      <div className="border-2 border-black ">
-        Name:&nbsp;&nbsp;&nbsp;{details.name}{" "}
-      </div>
-      <div className="border-2 border-black ">
-        Ability:&nbsp;&nbsp;&nbsp;{details.ability}{" "}
-      </div>
-      <div className="border-2 border-black ">
-        Height:&nbsp;&nbsp;&nbsp;{details.height}{" "}
-      </div>
-      <div className="border-2 border-black ">
-        Weight:&nbsp;&nbsp;&nbsp;{details.weight}{" "}
-      </div>
+      <div className="">Name:&nbsp;&nbsp;&nbsp;{details.name} </div>
+      <div className="">Ability:&nbsp;&nbsp;&nbsp;{details.ability} </div>
+      <div className="">Height:&nbsp;&nbsp;&nbsp;{details.height} </div>
+      <div className="">Weight:&nbsp;&nbsp;&nbsp;{details.weight} </div>
     </div>
   );
 }
 
 function SideBar({ lists, handleNext, handlePrevious }) {
   return (
-    <div className="mt-4 text-center">
-      <div className="m-2 bg-green-300 hover:drop-shadow-xl">Pokemon List</div>
+    <div className="mx-4 rounded-br-3xl bg-[#FEBE8C] pt-2 text-center lg:mr-4">
+      <div className="m-2  ">Pokemon List</div>
       <div className="flex flex-wrap justify-center">{lists}</div>
       <div className="mt-2 flex justify-center">
-        <div className="m-4 w-28 w-20 rounded-full border-2 border-black bg-green-300 p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
+        <div className="m-4 w-28 w-20 rounded-br-3xl  bg-[#FFFBC1] p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
           <button onClick={handleNext}>Next</button>
         </div>
-        <div className="m-4 w-28 w-20 rounded-full border-2 border-black bg-green-300 p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
+        <div className="m-4 w-28 w-20 rounded-br-3xl  bg-[#FFFBC1] p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
           <button onClick={handlePrevious}>Prev</button>
         </div>
       </div>
