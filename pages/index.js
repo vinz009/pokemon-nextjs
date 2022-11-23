@@ -3,20 +3,8 @@ import { useState, useEffect } from "react";
 
 export default function HomePage({ data }) {
   const [pokemon, setPokemon] = useState(data);
-  const [name, setName] = useState("");
-  const [ability, setAbility] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [front, setFront] = useState("");
-  const [back, setBack] = useState("");
-  const details = {
-    name,
-    ability,
-    height,
-    weight,
-    front,
-    back,
-  };
+
+  const [details, setDetails] = useState("");
 
   const lists = pokemon.results.map((pokemon) => (
     <div
@@ -32,12 +20,14 @@ export default function HomePage({ data }) {
     axios
       .get("https://pokeapi.co/api/v2/pokemon/" + poke)
       .then(function (response) {
-        setName(response.data.name);
-        setAbility(response.data.abilities[0].ability.name);
-        setHeight(response.data.height);
-        setWeight(response.data.weight);
-        setFront(response.data.sprites.front_default);
-        setBack(response.data.sprites.back_default);
+        setDetails({
+          name: response.data.name,
+          ability: response.data.abilities[0].ability.name,
+          height: response.data.height,
+          weight: response.data.weight,
+          front: response.data.sprites.front_default,
+          back: response.data.sprites.back_default,
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -104,10 +94,10 @@ function Image({ details }) {
   return (
     <div className="flex flex-row justify-center ">
       <div className="mx-2">
-        <img className="w-28 " src={details.front} alt={"image"} />
+        <img className="w-28 " src={details.front} alt="pokemon image front" />
       </div>
       <div className="w-28">
-        <img className="w-28" src={details.back} alt={"image"} />
+        <img className="w-28" src={details.back} alt="pokemon image back" />
       </div>
     </div>
   );
