@@ -8,7 +8,7 @@ export default function HomePage({ data }) {
 
   const lists = pokemon.results.map((pokemon, index) => (
     <div
-	  key={index}
+      key={index}
       className="m-1 w-40 rounded-br-3xl  bg-[#FFFBC1] p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-600 md:w-56 lg:w-96 "
       onClick={handleClick}
     >
@@ -122,11 +122,11 @@ function SideBar({ lists, handleNext, handlePrevious }) {
       <div className="m-2  ">Pokemon List</div>
       <div className="flex flex-wrap justify-center">{lists}</div>
       <div className="mt-2 flex justify-center">
-        <div className="m-4 w-28 w-20 rounded-br-3xl  bg-[#FFFBC1] p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
-          <button onClick={handleNext}>Next</button>
-        </div>
-        <div className="m-4 w-28 w-20 rounded-br-3xl  bg-[#FFFBC1] p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
+        <div className="m-4 w-28  rounded-br-3xl  bg-[#FFFBC1] p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
           <button onClick={handlePrevious}>Prev</button>
+        </div>
+        <div className="m-4 w-28  rounded-br-3xl  bg-[#FFFBC1] p-1 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-cyan-500 md:w-56 lg:w-96">
+          <button onClick={handleNext}>Next</button>
         </div>
       </div>
     </div>
