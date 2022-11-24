@@ -3,12 +3,17 @@ import { useState, useEffect } from "react";
 
 export default function HomePage({ data }) {
   const [pokemon, setPokemon] = useState(data);
-
+  let increment = 0;
+  let pokeData = pokemon.results.map((item) => {
+    return {
+      ...item,
+      id: increment++,
+    };
+  });
   const [details, setDetails] = useState("");
-
-  const lists = pokemon.results.map((pokemon, index) => (
+  const lists = pokeData.map((pokemon) => (
     <div
-      key={index}
+      key={pokemon.id}
       className="m-1 w-40 rounded-br-3xl  bg-[#FFFBC1] p-2 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-600 md:w-56 lg:w-96 "
       onClick={handleClick}
     >
